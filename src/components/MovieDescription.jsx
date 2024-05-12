@@ -1,35 +1,26 @@
 import { useSelector } from "react-redux";
 // import '../components//MovieList/MovieList.css'
 // import'../components/MovieList/MovieList.jsx'
+// import { useLocation } from 'react-router-dom';
 
 function MovieDescription() {
- 
+   
+console.log();
 
-    const movies = useSelector(store => store.movies);
+const selectedMovie = useSelector(store => store.selectedMovie); // Get selected movie from store
 
-    // if (!movie) {
-    //     return null;
-    // }
+    if (!selectedMovie) {
+        return '';
+      } 
     
 
     return (
         <>
         <section className="movies">
-           
-
-        {/* <h1>{JSON.stringify(movies)}</h1> */}
-        {/* <h1>{JSON.stringify(movies)}</h1> */}
-        
-
-        {movies.map(movie => {
-          return (
-            <div data-testid='movieItem' key={movie.id}>
-              <h3>{movie.id === }</h3>
-              <img src={movie.poster} alt={movie.title}/>
+            <div data-testid='movieItem' key={selectedMovie.id}>
+              <img src={selectedMovie.poster} alt={selectedMovie.title}/>
+              <h3>{selectedMovie.description}</h3>
             </div>
-          );
-        })}
-
         </section>
     </>
        

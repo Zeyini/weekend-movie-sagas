@@ -3,16 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import './MovieList.css';
 import { useHistory } from 'react-router-dom'
 
-
-
-
-
 function MovieList() {
 
   const history = useHistory()
   const dispatch = useDispatch();
   const movies = useSelector(store => store.movies);
-  const [selectedMovie, setSelectedMovie] = useState(null); //when the movie is selected the state of it being clicked is saved to selectedMovie variable. 
+
+
 
   useEffect(() => {
     dispatch({ type: 'FETCH_MOVIES' });
@@ -20,7 +17,7 @@ function MovieList() {
 
   const handleImageClick = (movie) => {
     history.push('/MovieDescription') // route to the MovieDescription Componenet
-    setSelectedMovie(movie) // set the State of the clicked image 
+    dispatch({ type:'SET_SELECTED_MOVIE', payload: movie });
   }
 
   return (
